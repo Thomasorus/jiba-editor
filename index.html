@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+        /* Box sizing rules */
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+        }
+
+        /* Prevent font size inflation */
+        html {
+          -moz-text-size-adjust: none;
+          -webkit-text-size-adjust: none;
+          text-size-adjust: none;
+        }
+
+        /* Remove default margin in favour of better control in authored CSS */
+        body, h1, h2, h3, h4, p,
+        figure, blockquote, dl, dd {
+          margin-block-end: 0;
+        }
+
+        /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+        ul[role='list'],
+        ol[role='list'] {
+          list-style: none;
+        }
+
+        /* Set core body defaults */
+        body {
+          min-height: 100vh;
+          line-height: 1.5;
+        }
+
+        /* Set shorter line heights on headings and interactive elements */
+        h1, h2, h3, h4,
+        button, input, label {
+          line-height: 1.1;
+        }
+
+        /* Balance text wrapping on headings */
+        h1, h2,
+        h3, h4 {
+          text-wrap: balance;
+        }
+
+        /* A elements that don't have a class get default styles */
+        a:not([class]) {
+          text-decoration-skip-ink: auto;
+          color: currentColor;
+        }
+
+        /* Make images easier to work with */
+        img,
+        picture {
+          max-width: 100%;
+          display: block;
+        }
+
+        /* Inherit fonts for inputs and buttons */
+        input, button,
+        textarea, select {
+          font-family: inherit;
+          font-size: inherit;
+        }
+
+        /* Make sure textareas without a rows attribute are not tiny */
+        textarea:not([rows]) {
+          min-height: 10em;
+        }
+
+        /* Anything that has been anchored to should have extra scroll margin */
+        :target {
+          scroll-margin-block: 5ex;
+        }
+
+        body {
+            margin:0;
+            height: 100dvh;
+            background-image: url('cement.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 2rem;
+        }
+
+        .card {
+            border: 10px solid #222;
+            border-bottom: 50px solid #222;
+            border-radius: 25px;
+            max-height: 100%;
+            aspect-ratio: 3/4.2;
+            margin: 2rem auto;
+            max-width: 520px;
+            background-image: url('cement2.jpg');
+            background-size: cover;
+            box-shadow: 6px 6px 8px #333;
+
+        }
+        .card__container {
+            width:100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 15px;
+            border:10px solid #222;
+            border-bottom: none;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+
+        }
+
+        .card__top {
+            height: 50px;
+            margin:10px;
+            font-size:1.6rem;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .card__middle {
+            font-size: 1.6rem;
+            color:#f1df72;
+            padding: 0 2rem;
+            text-shadow: 2px 0 black, -2px 0 black, 0 2px black, 0 -2px black,
+                         1px 1px black, -1px -1px black, 1px -1px black, -1px 1px black;
+            font-family: 'Helvetica Neue', sans-serif;
+            line-height: 1.2;
+        }
+
+        .card__middle dl div {
+            margin-top: 0.5rem;
+        }
+
+        .card__middle dl div span {
+            color:white;
+            margin-bottom: 1rem;
+        }
+
+        .card__bottom {
+            margin:auto -6px -2px -6px;
+            font-size:1.6rem;
+            text-align: center;
+        }
+
+        .glyph {
+            width:100%;
+            height: 50px;
+            border-radius: 20px / 50px;
+            background: rgb(18,104,155);
+            color: white;
+            box-shadow: 2px -5px 4px #a4b3be, 1px 1px 3px black;
+            padding:3px;
+        }
+
+        .glyph__sub {
+            width:100;
+            height: 100%;
+            border-radius: 20px / 50px;
+            border:2px solid black;
+            box-shadow: 0 3px 3px #a4b3be inset;
+            background: linear-gradient(90deg, rgba(18,104,155,1) 0%, rgba(12,31,45,1) 50%, rgba(18,104,155,1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .glyph__sub > div {
+            margin-top:5px;
+        }
+
+        .glyph__sub--alt {
+            box-shadow: 0 3px 3px white inset;
+
+            background: #a8bdd0;
+            color:black;
+
+        }
+
+        .strange-square {
+            border-left: 20px solid #222;
+            border-right: 20px solid #222;
+            width: 100%;
+        }
+
+        .strange-square div {
+            height: 40px;
+            width: 100%;
+            margin: 0 -20px 0 0px;
+            box-shadow: 3px 3px 2px #146da8 inset, -3px -4px 2px #146da8 inset;
+        }
+
+        .editor {
+            padding:3rem;
+            background-color: white;
+        }
+        .editor form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form > label {
+            margin-top:2rem;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="editor">
+            <h1>Jiba Editor</h1>
+              <form>
+                  <label for="title">Title</label>
+                  <input type="text" id="title" value="Newsletter Joue Ta Carte">
+                  <label for="text">Text</label>
+                  <textarea name="text" id="text">
+Pokemon - Les prochains sets annoncés
+Battle Spirit Saga - Promo des Pro Fests
+Battle Spirit Saga - Débarque sur BGA
+Star Wars Unlimited - Ça spoil !
+Digimon - Infernal Ascension
+UniVersus - Godzilla
+All - Le coin des spoilers</textarea>
+                  <label for="date">Date</label>
+                  <input type="text" id="date" value="07 Juin 2024">
+              </form>
+        </div>
+        <div class="card">
+            <div class="card__container">
+                <div class="card__top">
+                    <div class="glyph">
+                       <div class="glyph__sub">
+                           <div id="titleContainer">Newsletter Joue Ta Carte</div>
+                       </div>
+                    </div>
+                </div>
+
+                <div class="card__middle">
+                  <dl id="textContainer"><div>Pokemon  - <span> Les prochains sets annoncés</span></div><div>Battle Spirit Saga  - <span> Promo des Pro Fests</span></div><div>Battle Spirit Saga  - <span> Débarque sur BGA</span></div><div>Star Wars Unlimited  - <span> Ça spoil !</span></div><div>Digimon  - <span> Infernal Ascension</span></div><div>UniVersus  - <span> Godzilla</span></div><div>All  - <span> Le coin des spoilers</span></div></dl>
+                </div>
+
+                <div class="card__bottom">
+                    <div class="glyph">
+                       <div class="glyph__sub glyph__sub--alt">
+                           <div id="dateContainer">07 Juin 2024</div>
+                       </div>
+                    </div>
+                    <div class="strange-square">
+                        <div>&nbsp;</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+          const title = document.querySelector("#title");
+          const titleContainer = document.querySelector("#titleContainer");
+          const text = document.querySelector("#text");
+          const textContainer = document.querySelector("#textContainer");
+          const date = document.querySelector("#date");
+          const dateContainer = document.querySelector("#dateContainer");
+
+          title.addEventListener("input", function() {
+            titleContainer.innerText = this.value;
+          });
+
+          date.addEventListener("input", function() {
+            dateContainer.innerText = this.value;
+          });
+
+          text.addEventListener("input", function() {
+            const t = this.value
+            const split = t.split("\n")
+            let html = ""
+            split.forEach((el) => {
+              let textSplit = el.split("-")
+              let markup = `<div>${textSplit[0]} - <span>${textSplit[1]}</span></div>`
+              html += markup
+            })
+
+            textContainer.innerHTML = html;
+          });
+
+        </script>
+    </body>
+</html>
